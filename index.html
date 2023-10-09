@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script src="../assets/js/color-modes.js"></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+   <script src="https://kit.fontawesome.com/8c5246ca4a.js" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+   <title>Document</title>
+   <style>
+      :root {
+         --underline-color: rgb(0, 190, 127);
+      }
+
+      u {
+
+         text-decoration-color: var(--underline-color);
+      }
+
+      #typed-text {
+         color: var(--underline-color);
+      }
+
+      .navbar-nav li {
+         margin: 8px 12px;
+      }
+
+      #bgImage {
+         background-image: url('/assets/images/homepage-img.jpg');
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-attachment: fixed;
+      }
+
+      a[href='#home'].active svg,
+      a[href='#home'].active:link,
+      a[href='#home'].active:visited {
+         color: cyan !important;
+         fill: cyan;
+      }
+
+      a[href='#about'].active svg,
+      a[href='#about'].active:link,
+      a[href='#about'].active:visited {
+         color: darksalmon !important;
+         fill: darksalmon;
+      }
+
+      a[href='#education'].active svg,
+      a[href='#education'].active:link,
+      a[href='#education'].active:visited {
+         color: rgb(235, 221, 31) !important;
+         fill: rgb(235, 221, 31);
+      }
+
+      a[href='#experience'].active svg,
+      a[href='#experience'].active:link,
+      a[href='#experience'].active:visited {
+         color: rgb(161, 107, 26) !important;
+         fill: rgb(161, 107, 26);
+      }
+
+      a[href='#project'].active svg,
+      a[href='#project'].active:link,
+      a[href='#project'].active:visited {
+         color: rgb(79, 155, 55) !important;
+         fill: rgb(79, 155, 55);
+      }
+
+      a[href='#skills'].active svg,
+      a[href='#skills'].active:link,
+      a[href='#skills'].active:visited {
+         color: rgb(243, 37, 116) !important;
+         fill: crgb(243, 37, 116)yan;
+      }
+
+      a[href='#resume'].active svg,
+      a[href='#resume'].active:link,
+      a[href='#resume'].active:visited {
+         color: rgb(20, 98, 161) !important;
+         fill: rgb(20, 98, 161);
+      }
+
+      a[href='#contact'].active svg,
+      a[href='#contact'].active:link,
+      a[href='#contact'].active:visited {
+         color: rgb(69, 194, 31) !important;
+         fill: rgb(69, 194, 31);
+      }
+
+      #about,
+      #experience,
+      #education,
+      #project,
+      #skills,
+      #resume,
+      #contact {
+         background-color: var(--bs-body-bg);
+         padding: 20px 0px;
+      }
+
+      .fade-in {
+         opacity: 1;
+      }
+
+      .interest-card {
+         background-color: teal;
+         padding: 15px 10px;
+         margin: 5px 10px;
+
+      }
+
+      .interest-card:hover {
+         background-color: rgb(2, 105, 105);
+      }
+
+      .section-title h2 {
+         font-size: 32px;
+         font-weight: bold;
+         margin-bottom: 20px;
+         padding-bottom: 20px;
+         position: relative;
+         text-align: center;
+      }
+
+      .card-img-overlay {
+
+         opacity: 0;
+         transition: opacity 1.5s, background-color 1.5s;
+      }
+
+      .certification-card,
+      .project-card {
+         cursor: pointer;
+         margin-bottom: 15px;
+      }
+
+      .certification-card .card-footer,
+      .project-card .card-footer {
+         height: 100%;
+      }
+
+      .certification-card:hover .card-img-overlay,
+      .project-card:hover .card-img-overlay {
+         opacity: 1;
+         background-color: rgba(139, 139, 139, 0.795);
+      }
+
+      .ff-description>*:not(.ff-success) {
+         display: none;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="bgImage">
+      <header>
+         <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom">
+            <div class="container-fluid ms-5">
+               <a class="navbar-brand " href="#">
+                  <h3>Ajit Choudhary</h3>
+               </a>
+               <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                  aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                  aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas-header">
+                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div id="navbar-scrollspy" class="offcanvas-body">
+                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li>
+                           <a href="#home" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-house-door d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z" />
+                              </svg>
+                              Home
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#about" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-file-earmark-person-fill d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z" />
+                              </svg> About
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#education" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-mortarboard d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
+                                 <path
+                                    d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
+                              </svg>
+                              Education
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#experience" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-briefcase-fill d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z" />
+                                 <path
+                                    d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z" />
+                              </svg>
+                              Experience
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#project" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-folder-fill d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z" />
+                              </svg>
+                              Project
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#skills" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-person-up d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                                 <path
+                                    d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z" />
+                              </svg>
+                              Skills
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#resume" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-file-earmark-richtext d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                                 <path
+                                    d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z" />
+                              </svg>
+                              Resume
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#contact" class="nav-link text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-person-lines-fill d-lg-block mx-auto mb-1" viewBox="0 0 16 16">
+                                 <path
+                                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                              </svg>
+                              Contact
+                           </a>
+                        </li>
+                     </ul>
+
+                  </div>
+               </div>
+            </div>
+         </nav>
+      </header>
+      <main data-bs-spy="scroll" data-bs-target="#navbar-scrollspy" data-bs-root-margin="0px 0px -40%"
+         data-bs-smooth-scroll="true">
+         <div id="home" style="min-height: 100vh;background-color: rgba(0, 0, 0, .5);"
+            class="d-flex justify-content-center align-content-center">
+            <div class="align-self-center">
+               <h1 class="display-4">Ajit Choudhary</h1>
+               <h3>I'm <u><span id="typed-text"></span></u></h3>
+               <!-- <br>
+               <div class="row">
+                  <div class="col social-buttons">
+                     <a class="btn btn-social text-white btn-github mx-2" style="background-color: #383838;"
+                        role="button"><i class="fa fa-github"></i> </a>
+
+                     <a class="btn btn-social text-white btn-google-plus mx-2" style="background-color: #616161;"
+                        role="button"><i class="fa fa-google-plus"></i> </a>
+                     <a class="btn btn-social text-white btn-linkedin mx-2" style="background-color: #1181cc;"
+                        role="button"><i class="fa fa-linkedin"></i> </a>
+
+                  </div>
+               </div> -->
+            </div>
+         </div>
+         <!-- Home section ends here and the start of About Section -->
+         <div class="container-fluid" id="about" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Abo</u>ut</h2>
+               </div>
+               <div class=" row px-lg-5 justify-content-center">
+                  <div class="col-8 my-auto">
+                     <p>Hello, I'm Ajit Choudhary, a recent graduate with a Bachelor's degree in Engineering,
+                        specializing in
+                        Information
+                        Technology. My journey in the world of technology has been nothing short of exhilarating, and
+                        I'm
+                        eager
+                        to
+                        embark on the
+                        next phase of my career.</p>
+                     <div class="row fade-in">
+                        <div class="col ">
+                           <ul class="list-group list-group-flush">
+                              <li class="list-group-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                       height="16" fill="teal" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                       <path
+                                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg></span><strong> Birthday : &nbsp;</strong>21 Jan 2001</li>
+                              <li class="list-group-item"> <span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                       height="16" fill="teal" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                       <path
+                                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg></span><strong> Phone : &nbsp;</strong>+91 8390859661</li>
+                              <li class="list-group-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                       height="16" fill="teal" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                       <path
+                                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg></span><strong> email : &nbsp;</strong>ajitcc55@gmail.com</li>
+                           </ul>
+                        </div>
+                        <div class="col ">
+                           <ul class="list-group list-group-flush">
+                              <li class="list-group-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                       height="16" fill="teal" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                       <path
+                                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg></span><strong> Country : &nbsp;</strong>India</li>
+                              <li class="list-group-item"> <span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                       height="16" fill="teal" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                       <path
+                                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg></span><strong> Degree : &nbsp;</strong>Bachelor</li>
+                              <li class="list-group-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                       height="16" fill="teal" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                       <path
+                                          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg></span><strong> Website : &nbsp;</strong>www.bitsdomain.com</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-4 mobile-img text-center fade-in">
+                     <img src="assets/images/profile-pic.png" class="img-fluid" alt="mobile screen">
+                  </div>
+
+                  <p class="my-5">Aspiring software developer with a Bachelor of Engineering in Information Technology.
+                     Strong
+                     foundation in programming languages, web development, and a commitment to continuous learning.
+                     Proficient in Python, HTML, CSS, and JavaScript, PHP with a passion for building dynamic web
+                     applications. Eager to contribute technical expertise and creativity to a dynamic team, while
+                     embarking on a journey of professional growth and making a meaningful impact in the world of
+                     technology.</p>
+               </div>
+               <div class="section-title">
+                  <h2><u>Inter</u>est</h2>
+               </div>
+               <div class="row text-center justify-content-center fade-in">
+                  <div class="col-lg-3 col-md-4 interest-card">
+                     <div class="icon-box">
+                        <i class="fas fa-globe px-1" style="color: #ffbb2c;"></i>
+                        <h5 class="d-inline">Software Development</h5>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4 interest-card">
+                     <div class="icon-box">
+                        <i class="	fas fa-robot px-1" style="color: #ffbb2c;"></i>
+                        <h5 class="d-inline">Machine Learning</h5>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4  interest-card">
+                     <div class="icon-box">
+                        <i class="fas fa-cubes px-1" style="color: #ffbb2c;"></i>
+                        <h5 class="d-inline">Blockchain</h5>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4  interest-card">
+                     <div class="icon-box">
+                        <i class="fas fa-camera-retro px-1" style="color: #ffbb2c;"></i>
+                        <h5 class="d-inline">Computer Vision</h5>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4 interest-card">
+                     <div class="icon-box">
+                        <i class="fas fa-gamepad px-1" style="color: #ffbb2c;"></i>
+                        <h5 class="d-inline">Game Development</h5>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4 interest-card">
+                     <div class="icon-box">
+                        <i class="fas fa-code px-1" style="color: #ffbb2c;"></i>
+                        <h5 class="d-inline"> Software Engineering</h5>
+                     </div>
+                  </div>
+
+
+               </div>
+            </div>
+         </div>
+         <!-- About section ends here and the start of Education Section -->
+         <div class="container-fluid p-5" id="education" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Educat</u>ion</h2>
+               </div>
+               <div class="card " style="max-width: 18rem;">
+                  <img src="assets/images/college_image.png" class="card-img-top" alt="...">
+                  <div class="card-body p-2">
+                     <p><i>BE in Information Technology</i></p>
+                     <h5 class="card-title">July 2019 - May 2023</h5>
+                     <p class="card-text">Relevant Coursework</p>
+                     <ul>
+                        <li>Database Management Systems</li>
+                        <li>Cloud Computing</li>
+                        <li>Machine Learning</li>
+                     </ul>
+
+                  </div>
+               </div>
+               <div class="section-title">
+                  <h2><u>Online Certific</u>ation</h2>
+               </div>
+               <div class="d-flex flex-wrap justify-content-around">
+
+                  <div
+                     onclick="window.open(`https://drive.google.com/file/d/1q5kV-9uRIKG1yUOjmPje0rhY8h5AD_zj/view?usp=sharing`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/microsoft logo.jpg" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Microsoft Azure AI Fundamentals</h5>
+                        <p class="card-text">This gave me the foundational knowledge of machine learning and AI
+                           concepts, along with related Azure services</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Azure AI Fundamentals
+                     </div>
+                  </div>
+                  <div
+                     onclick="window.open(`https://drive.google.com/file/d/1_l1MzLSt5KjpVm9aOa2oSZZ_H5PqrnCt/view?usp=sharing`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/microsoft logo.jpg" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Introduction to Programming using JavaScript</h5>
+                        <p class="card-text">This exam evaluates an applicant's skill to work with JavaScript.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Introduction to Programming using JavaScript
+                     </div>
+                  </div>
+                  <div
+                     onclick="window.open(`https://www.freecodecamp.org/certification/__ajit__/responsive-web-design`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/freecodecamp logo.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Responsive Web Design</h5>
+                        <p class="card-text">Responsive Web Design Certification, teaches the languages that developers
+                           use to build webpages.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Responsive Web Design
+                     </div>
+                  </div>
+                  <div
+                     onclick="window.open(`https://drive.google.com/file/d/1z7J0J3MJWFeQbiyGwooI5KYSF8BUuFoS/view?usp=sharing`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/palo alto network.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Cybersecurity Foundation</h5>
+                        <p class="card-text">Teaches fundamental principles associated with the current
+                           cybersecurity landscape and
+                           mitigate attacks against enterprise networks.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Cybersecurity Foundation
+                     </div>
+                  </div>
+                  <div
+                     onclick="window.open(`https://drive.google.com/file/d/1cxherCGBLbu1r0pORz_Q6qYE7Nz8vgzb/view?usp=sharing`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/O-University-rgb.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Data Science Professional</h5>
+                        <p class="card-text">This validates a candidate’s ability to effectively identify
+                           OCI services used for implementing machine
+                           learning solutions for specific use cases.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Data Science Professional
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://courses.edx.org/certificates/1eb8d8e246364670917ed9ce44ccfc3a`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/IBM_logo.svg.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Introduction to Web Development</h5>
+                        <p class="card-text">Teaches key tools and programming languages to bootstrap your career as a
+                           Cloud Developer.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Introduction to Web Development
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://www.coursera.org/account/accomplishments/verify/8TJ8Z3J82Q9K `)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/Google_2015_logo.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Technical Support Fundamentals</h5>
+                        <p class="card-text">Teaches different facets of IT, like computer hardware,
+                           Internet, software,
+                           troubleshooting, and customer service.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Technical Support Fundamentals
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://www.coursera.org/account/accomplishments/verify/QHYLM72AZYYY`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/Google_2015_logo.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Bits and Bytes of Networking</h5>
+                        <p class="card-text">Covers fundamentals of modern networking technologies and protocols to an
+                           overview of the cloud and
+                           network troubleshooting.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Bits and Bytes of Networking
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://www.coursera.org/account/accomplishments/verify/SDCJBBVW6EUH`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/michigan university logo.jpg" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Python Data Structures</h5>
+                        <p class="card-text">This course introducees the core data structures of the Python programming
+                           language.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Python Data Structures
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://www.coursera.org/account/accomplishments/verify/HZAGBBEDLKS4`)"
+                     class="card certification-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/michigan university logo.jpg" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Programming for Everybody</h5>
+                        <p class="card-text">This course aims to teach the basics of programming computers using Python.
+                        </p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Programming for Everybody
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Education section ends here and the start of Experience Section -->
+         <div class="container-fluid " id="experience" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Experie</u>nce</h2>
+               </div>
+               <div class="fade-in">
+                  <div class="card my-2">
+                     <h5 class="card-header">Web developer Intern <span style="float: right;">May 2022 - June 22</span>
+                     </h5>
+
+                     <div class="card-body">
+                        <h5 class="card-title">THE SPARKS FOUNDATION</h5>
+                        <ul>
+                           <li>Interned as a Web Developer at Sparks Foundation, tasked with creating a Basic Banking
+                              System.</li>
+                           <li>Designed a user-friendly web application that allowed customers to view accounts, make
+                              transactions, and explore user profiles.</li>
+                           <li>Enhanced problem-solving skills and gained practical experience in web development during
+                              this engaging internship.</li>
+                           <li>Contributed to the development of a functional and interactive banking platform.</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="card my-2">
+                     <h5 class="card-header">Web developer Intern <span style="float: right;">August 2021 - September
+                           2021</span>
+                     </h5>
+                     <div class="card-body">
+                        <h5 class="card-title">ELITE TECHNO GROUPS</h5>
+                        <ul>
+                           <li>Interned at Elite Techno Group, where I received comprehensive training in basic Python
+                              programming.</li>
+                           <li>Collaborated with a talented team to develop a sophisticated Inventory Management System.
+                              Successfully created and
+                              implemented a basic predictive model, gaining valuable experience in data analysis.</li>
+                           <li>Gained practical knowledge in coding, problem-solving, and teamwork.</li>
+                           <li> This internship provided hands-on exposure to real-world coding challenges and laid the
+                              foundation for my programming skills.</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Experience section ends here and the start of Projects Section -->
+         <div class="container-fluid " id="project" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Proje</u>ct</h2>
+               </div>
+               <div class="d-flex flex-wrap justify-content-around">
+                  <div onclick="window.open(`https://github.com/Ajit-2111/sign-language-detection`)"
+                     class="card project-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/project-sign language detection.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Sign language Detection</h5>
+                        <p class="card-text">This tool is very helpful for the deaf and dumb people in communicating
+                           with others as knowing sign language is not
+                           something that is common to all</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Sign language Detection
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://github.com/Ajit-2111/emotion-detection`)"
+                     class="card project-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/project-emotion-recognition.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Emotion Recognition</h5>
+                        <p class="card-text">This tool detect emotions in real time, from images or videos, meaning you
+                           can analyze the emotions of people in real-world.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Emotion Recognition
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://github.com/Ajit-2111/hostel-management-system`)"
+                     class="card project-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/project-Institute-Hostel-Management-System-1.jpg" class="card-img-top"
+                        alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Hostel Management System</h5>
+                        <p class="card-text">Hostel management system is designed to manage all hostel activities like
+                           hostel admissions, fees, room, mess allotment,
+                           hostel stores & generates related reports for smooth transactions.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Hostel Management System
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://github.com/Ajit-2111/Library-Management-System`)"
+                     class="card project-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/project-library management system.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Library Management System</h5>
+                        <p class="card-text">The purpose of a library management system is to manage & track the daily
+                           work of the library such as issuing books,
+                           return books, due calculations, etc.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Library Management System
+                     </div>
+                  </div>
+                  <div onclick="window.open(`https://github.com/Ajit-2111/email_filtering`)"
+                     class="card project-card bg-dark text-white" style="max-width: 18rem;">
+                     <img src="assets/images/project-spam-filter.png" class="card-img-top" alt="...">
+                     <div class="card-img-overlay">
+                        <h5 class="card-title">Spam Detection</h5>
+                        <p class="card-text">It is a trained machine learning model must be able to determine whether
+                           the sequence of words found in an email are closer to
+                           those found in spam emails or safe ones.</p>
+                     </div>
+                     <div class="card-footer text-body-secondary">
+                        Spam Detection
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+         <!-- Project section ends here and the start of Skills Section -->
+         <div class="container-fluid " id="skills" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Skil</u>ls</h2>
+               </div>
+               <div class="bg-light px-5 py-4 my-2">
+                  <h4 class="text-dark">Language and Database </h4>
+                  <div class="d-flex flex-wrap">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-css.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-flutter.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-html.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-js.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-php.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-python.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/skill-mysql.png" alt="">
+                  </div>
+
+               </div>
+               <div class="bg-light px-5 py-4 mb-2">
+                  <h4 class="text-dark">Frameworks </h4>
+                  <div class="d-flex flex-wrap">
+                     <img height="80px" class="p-2 m-2" src="assets/images/framework-bootstrap.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/framework-flask.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/framework-jquery.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/framework-opencv.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/framework-scikit-learn.png" alt="">
+                  </div>
+
+               </div>
+               <div class="bg-light px-5 py-4 my-2">
+                  <h4 class="text-dark">Tools </h4>
+                  <div class="d-flex flex-wrap">
+                     <img height="80px" class="p-2 m-2" src="assets/images/tools-git.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/tools-jupyter.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/tools-pycharm.png" alt="">
+                     <img height="80px" class="p-2 m-2" src="assets/images/tools-vscode.png" alt="">
+                  </div>
+
+               </div>
+            </div>
+         </div>
+         <!-- Skills section ends here and the start of Resume Section -->
+         <div class="container-fluid " id="resume" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Resu</u>me</h2>
+               </div>
+
+               <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+                  <iframe loading="lazy"
+                     style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                     src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFL5lBfelo&#x2F;view?embed"
+                     allowfullscreen="allowfullscreen" allow="fullscreen">
+                  </iframe>
+               </div>
+               <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFL5lBfelo&#x2F;view?utm_content=DAFL5lBfelo&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
+                  target="_blank" rel="noopener"></a>
+            </div>
+         </div>
+         <!-- Resume section ends here and the start of Contact Section -->
+         <div class="container-fluid " id="contact" style="min-height: 100vh;">
+            <div class="container">
+               <div class="section-title">
+                  <h2><u>Conta</u>ct</h2>
+               </div>
+               <div class="container" id="ff-compose"></div>
+            </div>
+         </div>
+      </main>
+   </div>
+</body>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<script async defer
+   src="https://formfacade.com/include/101517526879782120830/form/1FAIpQLSfnbWTW8N7AYzjE6tQmUn8xj3rmlb9wYTthi9KnnwIwR_mXdg/bootstrap.js?div=ff-compose"></script>
+<script>
+   var typed = new Typed('#typed-text', {
+      strings: ['Developer', 'Engineer', 'AI Enthusiast'],
+      typeSpeed: 100,
+      backSpeed: 80,
+      loop: true
+   });
+   $(window).on("load", function () {
+      $(window).scroll(function () {
+         var windowBottom = $(this).scrollTop() + $(this).innerHeight();
+         $(".fade-in").each(function () {
+            /* Check the location of each desired element */
+            var objectBottom = $(this).offset().top + $(this).outerHeight();
+
+            /* If the element is completely within bounds of the window, fade it in */
+            if (objectBottom < windowBottom) { //object comes into view (scrolling down)
+               if ($(this).css("opacity") == 0) { $(this).fadeTo(500, 1); }
+            } else { //object goes out of view (scrolling up)
+               if ($(this).css("opacity") == 1) { $(this).fadeTo(500, 0); }
+            }
+         });
+      }).scroll(); //invoke scroll-handler on page-load
+   });
+   console.log($('iframe').contents().height() + 'is the height')
+</script>
+
+</html>
